@@ -3,17 +3,22 @@ import styled from "styled-components"
 import { Container } from "../../global"
 
 export const Nav = styled.nav`
-  padding: ${props => (props.scrolled ? `16px 0` : `24px 0`)};
+  padding: ${(props) => (props.scrolled ? `16px 0` : `14px 0`)};
   position: fixed;
   width: 100%;
+  color: ${(props) => props.bgColor};
   top: 0;
   z-index: 1000;
-  background: ${props => (props.scrolled ? `white` : null)};
+  background: ${(props) => (props.scrolled ? props.bgColor : props.bgColor2)};
   transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  a {
+    color: ${(props) => props.fontColor};
+  }
 `
 
 export const StyledContainer = styled(Container)`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
   justify-content: space-between;
   align-items: center;
 `
@@ -42,13 +47,13 @@ export const NavListWrapper = styled.div`
 
 export const NavItem = styled.li`
   margin: 0 0.75em;
-  font-family: ${props => props.theme.font.medium};
-  ${props => props.theme.font_size.xsmall};
+  font-family: ${(props) => props.theme.font.medium};
+  ${(props) => props.theme.font_size.xsmall};
 
   a {
     text-decoration: none;
     opacity: 0.9;
-    color: ${props => props.theme.color.black.regular};
+    color: ${(props) => (props.scrolled ? props.bgColor : props.bgColor2)};
   }
 
   &.active {
@@ -59,16 +64,20 @@ export const NavItem = styled.li`
 `
 
 export const MobileMenu = styled.div`
+  display: flex;
+  justify-content: flex-end;
   width: 100%;
   height: 100vh;
   z-index: 1000;
-  background: ${props => props.theme.color.regular};
+  background: ${(props) => props.theme.color.regular};
 `
 
 export const Brand = styled.div`
-  font-family: ${props => props.theme.font.extrabold};
-  ${props => props.theme.font_size.regular};
-  color: ${props => props.theme.color.black.regular};
+  display: flex;
+  justify-content: flex-start;
+  font-family: ${(props) => props.theme.font.extrabold};
+  ${(props) => props.theme.font_size.regular};
+  color: ${(props) => props.fontColor};
   text-decoration: none;
   letter-spacing: 1px;
   margin: 0;
@@ -78,23 +87,28 @@ export const Brand = styled.div`
     padding: 0;
 
     a {
-      color: ${props => props.theme.color.black.regular};
+      color: ${(props) => props.fontColor};
       text-decoration: none;
+      @media (max-width: ${(props) => props.theme.screen.md}) {
+        font-size: 18px;
+      }
     }
   }
 `
 export const ActionsContainer = styled.div`
   display: flex;
+  justify-content: flex-end;
+  display: flex;
   align-items: center;
-  @media (max-width: ${props => props.theme.screen.xs}) {
+  @media (max-width: ${(props) => props.theme.screen.xs}) {
     display: none;
   }
 
   button {
-    font-family: ${props => props.theme.font.normal};
-    ${props => props.theme.font_size.xsmall};
+    font-family: ${(props) => props.theme.font.normal};
+    ${(props) => props.theme.font_size.xsmall};
     color: white;
-    background: #098b8c;
+    background: ${(props) => props.theme.color.buttonAction};
     border-radius: 4px;
     padding: 10px 16px;
     text-transform: uppercase;
@@ -105,11 +119,11 @@ export const ActionsContainer = styled.div`
 export const Mobile = styled.div`
   display: none;
 
-  @media (max-width: ${props => props.theme.screen.xs}) {
+  @media (max-width: ${(props) => props.theme.screen.xs}) {
     display: block;
   }
 
-  ${props =>
+  ${(props) =>
     props.hide &&
     `
     display: block;

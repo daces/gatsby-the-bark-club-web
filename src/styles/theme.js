@@ -26,6 +26,7 @@ const theme = {
     primary: "#071435",
     secondary: "#098c8c",
     accent: "#cca86e",
+    buttonAction: "#01B00E",
     background: {
       white: "#ffffff",
       light: "#f8f8f8",
@@ -39,7 +40,7 @@ const theme = {
     black: {
       lightest: "#ABA8AF",
       light: "#564F62",
-      regular: "#071435",
+      regular: "#0E0E0E",
     },
   },
   screen: {

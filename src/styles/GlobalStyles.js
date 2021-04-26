@@ -9,69 +9,76 @@ const GlobalStyles = createGlobalStyle`
 
   html {
     ${"" /* change this if implementing light/dark mode functionality */}
-    color: ${props => props.theme.color.primary};
-
+    color: ${(props) => props.theme.color.primary};
+    overflow-x: hidden;
   }
   
   body {
-    font-family: ${props => props.theme.font.primary};
+    font-family: ${(props) => props.theme.font.primary};
+    position: relative;
+    overflow-x: hidden;
   }
-
+#about {
+  
+  min-width: 90%;
+  width: 90%;
+  margin: 0 auto;
+}
   
   h1 {
-    ${props => props.theme.font_size.xlarge};
-    font-family: ${props => props.theme.font.bold};
+    ${(props) => props.theme.font_size.xlarge};
+    font-family: ${(props) => props.theme.font.bold};
     
   }
 
   h2 {
-    ${props => props.theme.font_size.larger};
+    ${(props) => props.theme.font_size.larger};
   }
 
   h3 {
-    ${props => props.theme.font_size.larger};
-    font-family: ${props => props.theme.font.bold};
+    ${(props) => props.theme.font_size.larger};
+    font-family: ${(props) => props.theme.font.bold};
   }
 
   h4 {
-    ${props => props.theme.font_size.large};
-    font-family: ${props => props.theme.font.bold};
+    ${(props) => props.theme.font_size.large};
+    font-family: ${(props) => props.theme.font.bold};
   }
 
   h5 {
-    ${props => props.theme.font_size.xsmall};
-    font-family: ${props => props.theme.font.normal};
+    ${(props) => props.theme.font_size.xsmall};
+    font-family: ${(props) => props.theme.font.normal};
   }
 
   p {
-    ${props => props.theme.font_size.small};
+    ${(props) => props.theme.font_size.small};
     line-height: 22px;
 
   }
 
   input {
-    font-family: ${props => props.theme.font.normal};
+    font-family: ${(props) => props.theme.font.normal};
   }
 
-  @media (max-width: ${props => props.theme.screen.sm}) {
+  @media (max-width: ${(props) => props.theme.screen.sm}) {
     h1 {
-      ${props => props.theme.font_size.larger};
+      ${(props) => props.theme.font_size.larger};
     }
 
     h2 {
-      ${props => props.theme.font_size.large};
+      ${(props) => props.theme.font_size.large};
     }
 
     h3 {
-      ${props => props.theme.font_size.regular};
+      ${(props) => props.theme.font_size.regular};
     }
 
     p {
-      ${props => props.theme.font_size.small};
+      ${(props) => props.theme.font_size.small};
     }
   }
 
-  @media (max-width: ${props => props.theme.screen.xs}) {
+  @media (max-width: ${(props) => props.theme.screen.xs}) {
 
     h1 {
 
@@ -108,6 +115,10 @@ const GlobalStyles = createGlobalStyle`
     cursor: pointer;
   }
 
+  .highlight {
+    background: #FDF4D9;
+    color: #000;
+    }
 `
 
 export default GlobalStyles
